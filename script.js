@@ -37,7 +37,7 @@ for (var i = start; i <= stop; i++) {
 	var data = await getKhasra(villageID,i);
 	//console.log(data);
 	var csvObj = parseData(data);
-	var csvstr = i+','+csvObj.area+','+csvObj.name+','+csvObj.fname+'\n';
+	var csvstr = i+','+csvObj.area+','+csvObj.name.trim()+','+csvObj.fname.trim()+'\n';
 	totalstr+=csvstr;
 	document.getElementById('progress').innerHTML='Getting Plot No.'+i;
 
@@ -60,7 +60,7 @@ link.click(); // This will download the data file named "my_data.csv".
 function parseData(data){
 	try{
 
-	var area = data.split('Area : ')[1].split(' Hectare')[0];
+	var area = data.split('Area : ')[1].split(' Hectare')[0].trim();
 	if(data.split('Area : ').length>2){
 		var areaobjs = data.split('Area : ');
 		areaobjs.shift();
